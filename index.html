@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+    <title>ToDo-List</title>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="header__container">
+                <div class="block__logo">
+                    <img src="icons/Logo/icon-todo-list.png" alt="logo">
+                    <span>ToDo-List</span>
+                </div>
+                <div class="block__serting">
+                    <img src="icons/serting/icon-sorting-bottom.png" alt="icon">
+                    <img src="icons/serting/icon-sorting-top.png" alt="icon">
+                </div>
+                <div class="block__settings">
+                    <button class="settings__btn open-modal-btn">Создать задачу</button>
+                    <img src="icons/settings/icon-settings.png" alt="icon">
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="main">
+        <div class="wrapper">
+            <div class="main__no-tasks">
+                <h1 class="main__no-tasks-title">У вас нет ни одной задачи. Может создадим?</h1>
+                <button class="main__no-tasks-btn open-modal-btn">Создать задачу</button>
+            </div>
+
+            <div class="block-task-counter">
+                <div class="counter">
+                    <div class="total-task">
+                        <span>Всего задач:</span>
+                        <span class="total">0</span>
+                    </div>
+
+                    <div class="completed-tasks">
+                        <span>Всего задач выполнено:</span>
+                        <span class="completed">0</span>
+                    </div>
+                </div>
+                <h2>Все задачи</h2>
+            </div>
+
+        </div>
+            <div class="notes">
+                <div class="wrapper">
+                    <ul class="list__group" id="list">
+                            <!-- <h2 class="notes__title">Все задачи &check;</h2>
+                            <li class="list__group-item">
+                                <div class="note">
+                                    <span>Назване</span>
+                                    
+                                    <span>Описание</span>
+                                
+                                    <span>Приоретет</span>
+                                </div>
+                                <span>
+                                    <span>Дата создания задачи</span>
+                                    <span class="btn__success">&check;</span>
+                                    <span class="btn__danger">&times;</span>
+                                    <span class="btn__danger">&#9998;</span>
+                                </span>
+                            </li> -->
+                        </ul>
+                </div>
+            </div>
+        <div class="modal">
+            <div class="modal__window">
+                <div class="modal__window-block-top">
+                    <h2 class="modal__block-top-title">Пожалуйста, введите навзание <span>новой</span> задачи</h2>
+                </div>
+                <form class="modal__form" action="#">
+                    <span class="modal__form-input-title">Название задачи</span>
+                    <input type="text" class="modal__form-input" placeholder="Введите навзание задачи" id="title">
+
+                    <span class="modal__formtextarea-title">Описание задачи</span>
+                    <textarea class="modal__form-textarea" placeholder="Введите описание задачи" id="description"></textarea>
+
+                    <span class="modal__form-color-title">Цвет задачи</span>
+                    <input class="modal__form-input-color" type="color" id="color">
+
+                    <span class="modal__form-radio-title">Приоретет задачи</span>
+                    <div class="modal__block-radio">
+                        <div>
+                            <input class="modal__form-radio" type="radio" name="level" value="High">Высокий
+                        </div>
+                        <div>
+                            <input class="modal__form-radio" type="radio" name="level" value="Medium">Средний 
+                        </div>
+                        <div>
+                            <input class="modal__form-radio" type="radio" name="level" value="Low">Низкий
+                        </div>
+                    </div>
+                    <div class="modal__buttons">
+                        <!-- <button class="modal__button-ok" type="submit">Ok</button>
+                            <button class="modal__button-cancel" type="reset">Cancel</button> -->
+                            <span class="modal__button-ok">Ok</span>
+                            <span class="modal__button-cancel">Cancel</span>
+                    </div>
+                </form>
+                <div class="modal__window-close">&#10006</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
