@@ -1,6 +1,7 @@
 const createTaskBtn = document.querySelectorAll('.open-modal-btn');
 const blockNoTasks = document.querySelector('.main__no-tasks');
 const modal = document.querySelector('.modal');
+const backgroundModalBlock = document.querySelector('.modal');
 const modalWindow = document.querySelector('.modal__window');
 const closeBtn = document.querySelector('.modal__window-close');
 const okBtn = document.querySelector('.modal__button-ok');
@@ -60,7 +61,7 @@ createTaskBtn.forEach(elem => {                        //перебираю ка
 })
 
 function openModal() {                               //функция присваивает элементу новый класс, который показывает его на странице
-    modal.classList.add('open')
+    backgroundModalBlock.classList.add('open')
 }
 
 
@@ -95,7 +96,7 @@ function reset() {                                                    //функ
     }
     document.querySelector('.modal__form-input').value = '';
     document.querySelector('.modal__form-textarea').value = '';
-    modal.classList.remove('open');
+    backgroundModalBlock.classList.remove('open');
 }
 
 function countCase() {
@@ -155,7 +156,7 @@ function saveForm() {
     
     checkValidation(modalObj) && addTask(modalObj)
 
-    localStorage.setItem('tasks', JSON.stringify(arr))      //сохраняем данные из массива в localStorage
+    
     countCase()
 }
 
@@ -193,6 +194,7 @@ function addTask(data){
     `
 ) 
     blockNoTasks.style.display = 'none'
+    localStorage.setItem('tasks', JSON.stringify(arr))      //сохраняем данные из массива в localStorage
 }
 
 
@@ -245,13 +247,13 @@ function checkValidation(modalObj) {
 //закрытие модалки при нажатии на esc
 window.addEventListener('keydown', (e) => {
     if(e.key === 'Escape'){
-        modal.classList.remove('open')
+        backgroundModalBlock.classList.remove('open')
     }
 })
 
 //зыкрытие модалки при нажатии вне модалки
 window.onclick = function(e){
-    if(e.target === modal){
-        modal.classList.remove('open')
+    if(e.target === backgroundModalBlock){
+        backgroundModalBlock.classList.remove('open')
     }
 }
