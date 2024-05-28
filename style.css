@@ -373,7 +373,8 @@ header{
     margin-bottom: 15px;
 }
 .modal__form-input.error{
-    border: 3px solid red;
+    box-shadow: 0 0 17px red;
+    border: 2px solid red;
 }
 
 .modal__formtextarea-title{
@@ -391,7 +392,8 @@ header{
     resize: none;
 }
 .modal__form-textarea.error{
-    border: 3px solid red;
+    box-shadow: 0 0 17px red;
+    border: 2px solid red;
 }
 
 .modal__form-color-title{
@@ -413,7 +415,8 @@ header{
     margin-bottom: 20px;
 }
 .modal__block-radio.error{
-    border: 3px solid red;
+    box-shadow: 0 0 15px red;
+    border: 2px solid red;
 }
 .modal__block-radio div{
     display: flex;

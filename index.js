@@ -18,8 +18,13 @@ const taskCounter = document.querySelector('.block-task-counter');
 //     // document.body.classList.toggle('dark')
 // }
 
+
+
+
 let data = localStorage.getItem('tasks');
 let arr = [];
+
+function init() {
 
     if(data){
         arr = JSON.parse(data)
@@ -27,35 +32,39 @@ let arr = [];
         countCase()
     }   
 
-function loadingTasks(){
-    arr.forEach(elem => {
-        let listElement = document.querySelector('#list');
-        console.log(listElement)
-        listElement.insertAdjacentHTML('beforeend', 
-        `
-            <li class="list__group-item">
-                <div class="note">
-                    <span>${elem.title}</span>
+    function loadingTasks(){
+        arr.forEach(elem => {
+            let listElement = document.querySelector('#list');
+            console.log(listElement)
+            listElement.insertAdjacentHTML('beforeend', 
+            `
+                <li class="list__group-item">
+                    <div class="note">
+                        <span>${elem.title}</span>
+                        
+                        <span>${elem.description}</span>
                     
-                    <span>${elem.description}</span>
-                
-                    <span>${elem.priority}</span>
-                </div>
-                <span>
-                    <span>${elem.date}</span>
-                    <span class="btn__success">&check;</span>
-                    <span class="btn__danger">&times;</span>
-                    <span class="btn__change">&#9998;</span>
-                </span>
-            </li>
-        `
-    ) 
-
-    blockNoTasks.style.display = 'none'
-
-    })
-}     
+                        <span>${elem.priority}</span>
+                    </div>
+                    <span>
+                        <span>${elem.date}</span>
+                        <span class="btn__success">&check;</span>
+                        <span class="btn__danger">&times;</span>
+                        <span class="btn__change">&#9998;</span>
+                    </span>
+                </li>
+            `
+        ) 
     
+        blockNoTasks.style.display = 'none'
+    
+        })
+    }     
+}
+
+init()
+
+
 createTaskBtn.forEach(elem => {                        //перебираю каждую из кнопок создания задачи и при клике на любую из кнопок запускаю функцию                             
     elem.addEventListener('click', openModal)
 })
@@ -103,14 +112,12 @@ function countCase() {
     let totalTasks = document.querySelector('.total')
     taskCounter.classList.add('open')
     totalTasks.textContent = arr.length;
-
 }
+
 
 okBtn.addEventListener('click', saveForm);
 
-function saveForm() {
-   
-
+function saveForm() {   
     let inputForm = document.querySelector('.modal__form-input');
     let textareaForm = document.querySelector('.modal__form-textarea');
     let colorForm = document.querySelector('.modal__form-input-color');
@@ -155,8 +162,6 @@ function saveForm() {
    
     
     checkValidation(modalObj) && addTask(modalObj)
-
-    
     countCase()
 }
 
