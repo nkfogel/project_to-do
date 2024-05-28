@@ -77,6 +77,11 @@ select {
   }
 }
 
+.dark{
+    background-color: black;
+    color: #fff;
+}
+
 header{
     border-bottom: 1px solid gray;
 
@@ -136,6 +141,46 @@ header{
     width: 25px;
     height: 25px;
     cursor: pointer;
+}
+
+/* Dark mode btn */
+.dark-mode-btn{
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 58px;
+    height: 29px;
+    padding: 5px;
+    border-radius: 50px;
+    background-color: #272727;
+}
+
+.dark-mode-btn::before{
+    content: "";
+    position: absolute;
+    top: 1px;
+    right:1px;
+    
+    
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #fff;
+
+    transition: right 0.2s ease-in;
+}
+.dark-mode-btn--active::before{
+    right: 30px;
+}
+
+.dark-mode-btn-icon{
+    width: 16px;
+    height: 16px;
+    position: relative;
+    z-index: 9;
 }
 
 /* main */
@@ -203,6 +248,8 @@ header{
 /* .notes{
     margin-top: 100px;
 } */
+
+
 .notes__title{
     font-family: Roboto;
     font-size: 24px;

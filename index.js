@@ -9,8 +9,13 @@ const cancelBtn = document.querySelector('.modal__button-cancel');
 //task counter block
 const taskCounter = document.querySelector('.block-task-counter');
 
-
-
+// // dark mode
+// const btnDarkMode = document.querySelector('.dark-mode-btn')
+// btnDarkMode.onclick= function() {
+//     btnDarkMode.classList.toggle('dark-mode-btn--active')
+//     // // console.log('dark')
+//     // document.body.classList.toggle('dark')
+// }
 
 let data = localStorage.getItem('tasks');
 let arr = [];
@@ -19,9 +24,8 @@ let arr = [];
         arr = JSON.parse(data)
         loadingTasks()
         countCase()
-    }
+    }   
 
-    
 function loadingTasks(){
     arr.forEach(elem => {
         let listElement = document.querySelector('#list');
@@ -49,10 +53,8 @@ function loadingTasks(){
     blockNoTasks.style.display = 'none'
 
     })
+}     
     
-}
-
-
 createTaskBtn.forEach(elem => {                        //перебираю каждую из кнопок создания задачи и при клике на любую из кнопок запускаю функцию                             
     elem.addEventListener('click', openModal)
 })
@@ -67,12 +69,30 @@ closeBtn.addEventListener('click', closeModal)         //при нажатии �
 
 function cancelModal() {
     reset()
+    let inputForm = document.querySelector('.modal__form-input');
+    let textareaForm = document.querySelector('.modal__form-textarea');
+    let radioForm = document.querySelector('.modal__block-radio');
+    inputForm.classList.remove('error');
+    textareaForm.classList.remove('error');
+    radioForm.classList.remove('error');
+   
 }
 function closeModal() {
     reset()
+    let inputForm = document.querySelector('.modal__form-input');
+    let textareaForm = document.querySelector('.modal__form-textarea');
+    let radioForm = document.querySelector('.modal__block-radio');
+    inputForm.classList.remove('error');
+    textareaForm.classList.remove('error');
+    radioForm.classList.remove('error');
+  
 }
 
 function reset() {                                                    //функция, которая удаялет класс у модального окна и убирая его со страницы, также очищая инпуты, вызываеться выше в функциях
+    let radioForm = document.querySelectorAll('.modal__form-radio');
+    for(let radio of radioForm){
+        radio.checked = false
+    }
     document.querySelector('.modal__form-input').value = '';
     document.querySelector('.modal__form-textarea').value = '';
     modal.classList.remove('open');
@@ -88,6 +108,7 @@ function countCase() {
 okBtn.addEventListener('click', saveForm);
 
 function saveForm() {
+   
 
     let inputForm = document.querySelector('.modal__form-input');
     let textareaForm = document.querySelector('.modal__form-textarea');
@@ -195,15 +216,20 @@ function checkValidation(modalObj) {
         textareaForm.classList.remove('error')
     }
 
-    let y = document.querySelectorAll('input[type="radio"]');
-    if (y.length > 0){
+    let radioValidation = document.querySelectorAll('input[type="radio"]');
+    if (radioValidation.length > 0){
         let checked = false;
-        for(i=0; i<y.length;i++){
-            if (y[i].checked){
+        radioValidation.forEach(item => {
+            if (item.checked){
                 checked = true;
-                break;
             }
-        }
+        })
+        // for(i=0; i<radioValidation.length;i++){
+        //     if (radioValidation[i].checked){
+        //         checked = true;
+        //         break;
+        //     }
+        // }
         if(!checked){
             radioForm.classList.add('error')
             return false
@@ -211,8 +237,6 @@ function checkValidation(modalObj) {
             radioForm.classList.remove('error')
         }
     }
-
-
     reset()
     return true;
 }
