@@ -81,7 +81,7 @@ function cancelModal() {
     reset()
     let inputForm = document.querySelector('.modal__form-input');
     let textareaForm = document.querySelector('.modal__form-textarea');
-    let radioForm = document.querySelector('.modal__block-radio');
+    let radioForm = document.querySelector('.modal__form-radio');
     inputForm.classList.remove('error');
     textareaForm.classList.remove('error');
     radioForm.classList.remove('error');
@@ -91,7 +91,7 @@ function closeModal() {
     reset()
     let inputForm = document.querySelector('.modal__form-input');
     let textareaForm = document.querySelector('.modal__form-textarea');
-    let radioForm = document.querySelector('.modal__block-radio');
+    let radioForm = document.querySelector('.modal__form-radio');
     inputForm.classList.remove('error');
     textareaForm.classList.remove('error');
     radioForm.classList.remove('error');
@@ -99,7 +99,7 @@ function closeModal() {
 }
 
 function reset() {                                                    //функция, которая удаялет класс у модального окна и убирая его со страницы, также очищая инпуты, вызываеться выше в функциях
-    let radioForm = document.querySelectorAll('.modal__form-radio');
+    let radioForm = document.querySelectorAll('.form__radio');
     for(let radio of radioForm){
         radio.checked = false
     }
@@ -206,7 +206,7 @@ function addTask(data){
 function checkValidation(modalObj) {
     let inputForm = document.querySelector('.modal__form-input');
     let textareaForm = document.querySelector('.modal__form-textarea');
-    let radioForm = document.querySelector('.modal__block-radio');
+    let radioForm = document.querySelector('.modal__form-radio');
     console.log(modalObj)
 
     if (inputForm.value.length === 0){
@@ -223,7 +223,7 @@ function checkValidation(modalObj) {
         textareaForm.classList.remove('error')
     }
 
-    let radioValidation = document.querySelectorAll('input[type="radio"]');
+    let radioValidation = document.querySelectorAll('.form__radio');
     if (radioValidation.length > 0){
         let checked = false;
         radioValidation.forEach(item => {
