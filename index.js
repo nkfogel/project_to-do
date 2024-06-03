@@ -7,6 +7,41 @@ const closeBtn = document.querySelector('.modal__window-close');
 const okBtn = document.querySelector('.modal__button-ok');
 const cancelBtn = document.querySelector('.modal__button-cancel');
 
+const settingBtn = document.querySelector('.settings__btn');
+const settingMenu = document.querySelector('.settings__menu');
+const closeSettingMenu = document.querySelector('.close__settings-btn');
+
+
+
+settingBtn.addEventListener('click', openSetting)
+function openSetting(){
+    settingMenu.classList.add('open')
+}
+
+closeSettingMenu.addEventListener('click', closeSetting);
+function closeSetting() {
+    settingMenu.classList.remove('open')
+}
+// const settingBlock = document.querySelector('.settings__btn-background-block');
+// const settingBtn = document.querySelector('.settings__btn')
+
+ 
+// settingBtn.addEventListener('click', openSetting)
+
+// function openSetting(){
+//     settingBlock.style.display = 'flex';
+// }
+
+// function closeSetting(){
+//     settingBlock.style.display = 'none';
+// }
+
+// window.onclick = function(e){
+//     if(e.target === settingBlock){
+//         closeSetting()
+//         console.log('fv')
+//     }
+// }
 //task counter block
 const taskCounter = document.querySelector('.block-task-counter');
 
@@ -114,14 +149,13 @@ function countCase() {
     totalTasks.textContent = arr.length;
 }
 
-
 okBtn.addEventListener('click', saveForm);
 
 function saveForm() {   
     let inputForm = document.querySelector('.modal__form-input');
     let textareaForm = document.querySelector('.modal__form-textarea');
     let colorForm = document.querySelector('.modal__form-input-color');
-    let radioForm = document.querySelectorAll('.modal__form-radio');
+    let radioValidation = document.querySelectorAll('.form__radio');
     let date = new Date().toLocaleString();
 
     // const fullYear = date.getFullYear();
@@ -144,7 +178,7 @@ function saveForm() {
    
     let priority
 
-    radioForm.forEach(item => {
+    radioValidation.forEach(item => {
         if(item.checked){
             priority = item.value
         }
